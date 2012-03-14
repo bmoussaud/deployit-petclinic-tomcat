@@ -1,0 +1,17 @@
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+    <type-modification type="udm.DeploymentPackage">
+            <property name="released" description="Indicates the package has been released by the DEV team" required="false" kind="boolean" category="Deployment Checklist"/>
+            <property name="isUserTested" description="Indicates the package has been tested by a user" required="false" kind="boolean" category="Deployment Checklist"/>
+            <property name="isPerformanceTested" description="Indicates the package has been performance tested" required="false" kind="boolean" category="Deployment Checklist"/>
+    </type-modification>
+
+    <type-modification type="udm.Environment">
+            <property name="released" description="Indicates the package has been released by the DEV team" kind="boolean" required="false" category="Deployment Checklist"/>
+            <property name="isUserTested" description="Indicates the package has been tested by the user" kind="boolean" required="false" category="Deployment Checklist"/>
+            <property name="isPerformanceTested" description="Indicates the package has been performance tested" kind="boolean" required="false" category="Deployment Checklist"/>
+    </type-modification>
+
+</synthetic>
