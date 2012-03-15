@@ -14,7 +14,7 @@ tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-dev', 'to
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
 data=repository.create(factory.configurationItem('Environments/DictTomcatDev', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserDev','tomcat.DataSource.password':'tiger','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:8080/petclinic/index.jsp'}}))
-sql=repository.create(factory.configurationItem(host.id+'/sql-dev', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'deployit','username':'root','password':'xebialabs'}))
+sql=repository.create(factory.configurationItem(host.id+'/sql-dev', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicDev','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Dev', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id]}))
 
 #TEST
@@ -23,7 +23,7 @@ tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-test', 't
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
 data=repository.create(factory.configurationItem('Environments/DictTomcatTest', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserTest','tomcat.DataSource.password':'lion','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:9080/petclinic/index.jsp'}}))
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
-sql=repository.create(factory.configurationItem(host.id+'/sql-test', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'deployit','username':'root','password':'xebialabs'}))
+sql=repository.create(factory.configurationItem(host.id+'/sql-test', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicTest','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Test', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id],'released':'true'}))
 
 #ACC
@@ -32,7 +32,7 @@ tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-acc', 'to
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
 data=repository.create(factory.configurationItem('Environments/DictTomcatAcc', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserAcc','tomcat.DataSource.password':'zebra','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:10080/petclinic/index.jsp'}}))
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
-sql=repository.create(factory.configurationItem(host.id+'/sql-acc', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'deployit','username':'root','password':'xebialabs'}))
+sql=repository.create(factory.configurationItem(host.id+'/sql-acc', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicProd2','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Acc', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id],'isUserTested':'true'}))
 
 
@@ -46,7 +46,7 @@ vh2=repository.create(factory.configurationItem(tomcat2.id+'/defaultVH', 'tomcat
 testRunner1=repository.create(factory.configurationItem(host1.id+'/testRunner', 'tests2.TestRunner', {'host':host1.id}))
 testRunner2=repository.create(factory.configurationItem(host2.id+'/testRunner', 'tests2.TestRunner', {'host':host2.id}))
 data=repository.create(factory.configurationItem('Environments/DictTomcatProduction', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserProduction','tomcat.DataSource.password':'cat','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:11080/petclinic/index.jsp'}}))
-sql=repository.create(factory.configurationItem(host1.id+'/sql-prod', 'sql.MySqlClient', {'host':host1.id,'mySqlHome':'/usr','databaseName':'deployit','username':'root','password':'xebialabs'}))
+sql=repository.create(factory.configurationItem(host1.id+'/sql-prod', 'sql.MySqlClient', {'host':host1.id,'mySqlHome':'/usr','databaseName':'petclinicProd1','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Production', 'udm.Environment', {'members':[host1.id, tomcat1.id, vh1.id,host2.id, tomcat2.id, vh2.id, testRunner1.id, testRunner2.id,sql.id ], 'dictionaries':[data.id, common.id],'isPerformanceTested':'true','isUserTested':'true'}))
 
 
@@ -89,8 +89,8 @@ security.grant("repo#edit", "ops" , ['Applications'])
 
 
 
-security.grant("import#initial", "developers" )
-security.grant("import#upgrade", "developers" )
+security.grant("import#initial", "developers" ,['Applications'])
+security.grant("import#upgrade", "developers" ,['Applications'])
 security.grant("deploy#initial", "developers", ['Environments/DevelopmentDirectory'])
 security.grant("deploy#upgrade", "developers", ['Environments/DevelopmentDirectory'])
 security.grant("task#skip_step", "developers", ['Environments/DevelopmentDirectory'])
@@ -107,10 +107,10 @@ security.grant("deploy#initial", "ops", ['Environments/ProductionDirectory'])
 security.grant("deploy#upgrade", "ops", ['Environments/ProductionDirectory'])
 security.grant("task#skip_step", "ops", ['Environments/ProductionDirectory'])
 
-security.grant('read','developers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-security.grant('read','testers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-security.grant('read','accepters',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-security.grant('read','ops',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+#security.grant('read','developers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+#security.grant('read','testers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+#security.grant('read','accepters',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+#security.grant('read','ops',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
 
 
 
