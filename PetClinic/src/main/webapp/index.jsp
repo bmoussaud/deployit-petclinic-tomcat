@@ -21,7 +21,6 @@ String title =resource.getString("title");
 <p>&nbsp;</p>
 
 	<p>-- {{TITLE}} -- </p>
-	<p>-- {{TOTO}} -- </p>
 
 <ul>
   <li><a href="/petclinic/findOwners.jsp">Find owner</a></li>
