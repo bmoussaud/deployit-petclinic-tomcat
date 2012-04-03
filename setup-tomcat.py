@@ -107,10 +107,10 @@ security.grant("deploy#initial", "ops", ['Environments/ProductionDirectory'])
 security.grant("deploy#upgrade", "ops", ['Environments/ProductionDirectory'])
 security.grant("task#skip_step", "ops", ['Environments/ProductionDirectory'])
 
-#security.grant('read','developers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-#security.grant('read','testers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-#security.grant('read','accepters',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
-#security.grant('read','ops',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+security.grant('read','developers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+security.grant('read','testers',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+security.grant('read','accepters',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
+security.grant('read','ops',['Environments/DevelopmentDirectory','Environments/TestDirectory','Environments/AcceptanceDirectory','Environments/ProductionDirectory'])
 
 
 
