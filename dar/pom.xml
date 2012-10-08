@@ -17,7 +17,7 @@
 			<plugin>
 				<groupId>com.xebialabs.deployit</groupId>
 				<artifactId>maven-deployit-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.7.1</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
@@ -30,8 +30,8 @@
 				</executions>
 
 				<configuration>
-					<testMode>true</testMode>
-					<skipMode>true</skipMode>
+					<testMode>false</testMode>
+					<skipMode>false</skipMode>
 
 					<deletePreviouslyDeployedDar>true</deletePreviouslyDeployedDar>
 					<serverAddress>localhost</serverAddress>
@@ -53,7 +53,7 @@
 						<deployable>
 							<name>petclinicDS</name>
 							<type>tomcat.DataSourceSpec</type>
-							<jndiName>jndi/toto</jndiName>
+							<jndiName>jndi/pet</jndiName>
 							<!--
 							<driverClassName>com.mysql.jdbc.Driver</driverClassName>
 							<url>jdbc:mysql://localhost/petclinic</url>
@@ -74,7 +74,7 @@
 						</deployable>
 					</deployables>
 
-					<environmentId>Environments/Tomcat-Dev</environmentId>
+					<environmentId>Environments/DEV/Tomcat-Dev</environmentId>
 
 				</configuration>
 			</plugin>

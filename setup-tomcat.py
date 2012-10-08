@@ -1,7 +1,7 @@
 #Application
 #app=repository.create(factory.configurationItem('Applications/PetPortal','udm.Application',{'deploymentPipeline':['Environments/Tomcat-Dev','Environments/Tomcat-Test','Environments/Tomcat-Acc','Environments/Tomcat-Production']}))
 
-common=repository.create(factory.configurationItem('Environments/DictCommon', 'udm.Dictionary', {'entries':{'tomcat.DataSource.driverClassName':'com.mysql.jdbc.Driver','tomcat.DataSource.url':'jdbc:mysql://localhost/petclinic','tomcat.DataSource.context':'petclinic','TITLE':'Demo by Benoit','tests2.ExecutedHttpRequestTest.expectedResponseText':'Home','tests2.HttpRequestTester.showPageInConsole':'true'}}))
+common=repository.create(factory.configurationItem('Environments/DictCommon', 'udm.Dictionary', {'entries':{'tomcat.DataSource.driverClassName':'com.mysql.jdbc.Driver','tomcat.DataSource.url':'jdbc:mysql://localhost/petclinic','tomcat.DataSource.context':'petclinic','TITLE':'Demo by Benoit','tests2.ExecutedHttpRequestTest.expectedResponseText':'Home','tests2.HttpRequestTester.showPageInConsole':'true','title':'PetSound','timeout':'45','file.DeployedFolder.createTargetPath':'true','file.DeployedFolder.targetPath':'/home/ubuntu/tc/config','file.DeployedArchive.createTargetPath':'true','file.DeployedArchive.targetPath':'/home/ubuntu/tc/lib'}}))
 
 repository.create(factory.configurationItem('Environments/DevelopmentDirectory','core.Directory'))
 repository.create(factory.configurationItem('Environments/TestDirectory','core.Directory'))
@@ -13,7 +13,7 @@ host=repository.create(factory.configurationItem('Infrastructure/host-ubuntu-vm'
 tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-dev', 'tomcat.Server', {'host':host.id,'home':'/home/ubuntu/tomcat/tomcat-dev','startCommand':'nohup /home/ubuntu/tomcat/tomcat-dev/bin/startup.sh && sleep 5','stopCommand':'/home/ubuntu/tomcat/tomcat-dev/bin/shutdown.sh'}))
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
-data=repository.create(factory.configurationItem('Environments/DictTomcatDev', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserDev','tomcat.DataSource.password':'tiger','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:8080/petclinic/index.jsp'}}))
+data=repository.create(factory.configurationItem('Environments/DictTomcatDev', 'udm.Dictionary', {'entries':{'DATABASE_USERNAME':'UserDev','DATABASE_PASSWORD':'tiger','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:8080/petclinic/index.jsp'}}))
 sql=repository.create(factory.configurationItem(host.id+'/sql-dev', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicDev','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Dev', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id]}))
 
@@ -21,7 +21,7 @@ env = repository.create(factory.configurationItem('Environments/Tomcat-Dev', 'ud
 host=repository.create(factory.configurationItem('Infrastructure/host-test-vm', 'overthere.SshHost', {'address':'deployit.vm','os':'UNIX', 'connectionType':'SFTP', 'username':'ubuntu', 'password':'ubuntu'}))
 tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-test', 'tomcat.Server', {'host':host.id,'home':'/home/ubuntu/tomcat/tomcat-test','startCommand':'nohup /home/ubuntu/tomcat/tomcat-test/bin/startup.sh && sleep 5','stopCommand':'/home/ubuntu/tomcat/tomcat-test/bin/shutdown.sh'}))
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
-data=repository.create(factory.configurationItem('Environments/DictTomcatTest', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserTest','tomcat.DataSource.password':'lion','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:9080/petclinic/index.jsp'}}))
+data=repository.create(factory.configurationItem('Environments/DictTomcatTest', 'udm.Dictionary', {'entries':{'DATABASE_USERNAME':'UserTest','DATABASE_PASSWORD':'lion','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:9080/petclinic/index.jsp'}}))
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
 sql=repository.create(factory.configurationItem(host.id+'/sql-test', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicTest','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Test', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id],'released':'true'}))
@@ -30,7 +30,7 @@ env = repository.create(factory.configurationItem('Environments/Tomcat-Test', 'u
 host=repository.create(factory.configurationItem('Infrastructure/host-acc-vm', 'overthere.SshHost', {'address':'deployit.vm','os':'UNIX', 'connectionType':'SFTP', 'username':'ubuntu', 'password':'ubuntu'}))
 tomcatdev=repository.create(factory.configurationItem(host.id+'/tomcat-acc', 'tomcat.Server', {'host':host.id,'home':'/home/ubuntu/tomcat/tomcat-acc','startCommand':'nohup /home/ubuntu/tomcat/tomcat-acc/bin/startup.sh && sleep 5','stopCommand':'/home/ubuntu/tomcat/tomcat-acc/bin/shutdown.sh'}))
 vh=repository.create(factory.configurationItem(tomcatdev.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcatdev.id}))
-data=repository.create(factory.configurationItem('Environments/DictTomcatAcc', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserAcc','tomcat.DataSource.password':'zebra','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:10080/petclinic/index.jsp'}}))
+data=repository.create(factory.configurationItem('Environments/DictTomcatAcc', 'udm.Dictionary', {'entries':{'DATABASE_USERNAME':'UserAcc','DATABASE_PASSWORD':'zebra','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:10080/petclinic/index.jsp'}}))
 testRunner=repository.create(factory.configurationItem(host.id+'/testRunner', 'tests2.TestRunner', {'host':host.id}))
 sql=repository.create(factory.configurationItem(host.id+'/sql-acc', 'sql.MySqlClient', {'host':host.id,'mySqlHome':'/usr','databaseName':'petclinicProd2','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Acc', 'udm.Environment', {'members':[host.id, tomcatdev.id, vh.id, testRunner.id,sql.id], 'dictionaries':[data.id, common.id],'isUserTested':'true'}))
@@ -45,7 +45,7 @@ vh1=repository.create(factory.configurationItem(tomcat1.id+'/defaultVH', 'tomcat
 vh2=repository.create(factory.configurationItem(tomcat2.id+'/defaultVH', 'tomcat.VirtualHost', {'server':tomcat2.id}))
 testRunner1=repository.create(factory.configurationItem(host1.id+'/testRunner', 'tests2.TestRunner', {'host':host1.id}))
 testRunner2=repository.create(factory.configurationItem(host2.id+'/testRunner', 'tests2.TestRunner', {'host':host2.id}))
-data=repository.create(factory.configurationItem('Environments/DictTomcatProduction', 'udm.Dictionary', {'entries':{'tomcat.DataSource.username':'UserProduction','tomcat.DataSource.password':'cat','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:11080/petclinic/index.jsp'}}))
+data=repository.create(factory.configurationItem('Environments/DictTomcatProduction', 'udm.Dictionary', {'entries':{'DATABASE_USERNAME':'UserProduction','DATABASE_PASSWORD':'cat','tests2.ExecutedHttpRequestTest.url':'http://deployit.vm:11080/petclinic/index.jsp'}}))
 sql=repository.create(factory.configurationItem(host1.id+'/sql-prod', 'sql.MySqlClient', {'host':host1.id,'mySqlHome':'/usr','databaseName':'petclinicProd1','username':'root','password':'xebialabs'}))
 env = repository.create(factory.configurationItem('Environments/Tomcat-Production', 'udm.Environment', {'members':[host1.id, tomcat1.id, vh1.id,host2.id, tomcat2.id, vh2.id, testRunner1.id, testRunner2.id,sql.id ], 'dictionaries':[data.id, common.id],'isPerformanceTested':'true','isUserTested':'true'}))
 
