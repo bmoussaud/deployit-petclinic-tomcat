@@ -11,14 +11,12 @@
 	<modules>
 		<module>PetClinic</module>
 		<module>PetClinic-Backend</module>
+		<module>dar</module>
 	</modules>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>nexus-dexter-releases</id>
-			<url>http://dexter.xebialabs.com/nexus/content/repositories/releases</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>nexus-xebialabs</id>
+      <url>http://nexus.xebialabs.com/nexus/content/repositories/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 
