@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.xebialabs.deployit.demos</groupId>
-    <artifactId>deployit-petclinic-parent</artifactId>
+    <groupId>com.xebialabs.xldeploy.demos</groupId>
+    <artifactId>xldeploy-petclinic-parent</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>deployit-petclinic-tomcat</artifactId>
+  <artifactId>xldeploy-petclinic-tomcat</artifactId>
   <packaging>dar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>PetClinic Deployit DAR</name>
+  <name>PetClinic xldeploy DAR</name>
   <url>http://maven.apache.org</url>
   <build>
     <plugins>
@@ -30,45 +30,20 @@
         </executions>
 
         <configuration>
-          <deletePreviouslyDeployedDar>true</deletePreviouslyDeployedDar>
           <serverAddress>localhost</serverAddress>
           <deployables>
-            <deployable>
-              <name>petclinic</name>
-              <type>jee.War</type>
-              <groupId>com.xebialabs.deployit.demos</groupId>
-              <artifactId>PetClinic</artifactId>
-            </deployable>
-            <deployable>
-              <name>petclinic-backend</name>
-              <type>jee.War</type>
-              <groupId>com.xebialabs.deployit.demos</groupId>
-              <artifactId>PetClinic-Backend</artifactId>
-            </deployable>
+            <jee.War name="petclinic" groupId="com.xebialabs.xldeploy.demos" artifactId="PetClinic" />
+            <jee.War name="petclinic-backend" groupId="com.xebialabs.xldeploy.demos" artifactId="PetClinic-Backend" />
 
-
-            <deployable>
-              <name>petclinicDS</name>
-              <type>tomcat.DataSourceSpec</type>
-              <jndiName>jndi/pet</jndiName>
-              <!--
-              <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-              <url>jdbc:mysql://localhost/petclinic</url>
+            <tomcat.DataSourceSpec name="petclinicDS">
               <username>{{DATABASE_USERNAME}}</username>
+              <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+              <jndiName>jndi/pet</jndiName>
               <password>{{DATABASE_PASSWORD}}</password>
-              -->
-            </deployable>
+              <url>{{DATABASE_URL}}</url>
+            </tomcat.DataSourceSpec>
 
-            <deployable>
-              <type>file.Archive</type>
-              <groupId>mysql</groupId>
-              <artifactId>mysql-connector-java</artifactId>
-            </deployable>
-            <deployable>
-              <name>configuration</name>
-              <type>file.Folder</type>
-              <location>config</location>
-            </deployable>
+            <tomcat.ConfigurationFolder name="configuration" location="config"  />
           </deployables>
 
           <environmentId>Environments/Dev/Tomcat-Dev</environmentId>
@@ -80,14 +55,14 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.xebialabs.deployit.demos</groupId>
+      <groupId>com.xebialabs.xldeploy.demos</groupId>
       <artifactId>PetClinic</artifactId>
       <version>1.0</version>
       <type>war</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.xebialabs.deployit.demos</groupId>
+      <groupId>com.xebialabs.xldeploy.demos</groupId>
       <artifactId>PetClinic-Backend</artifactId>
       <version>1.2</version>
       <type>war</type>
