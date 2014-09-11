@@ -42,7 +42,7 @@
                         </jee.DataSourceSpec>
 
                         <app.Logger name="logger" location="logger"/>
-                        <sql.Scripts name="sql" location="sql"/>
+                        <sql.SqlScripts name="sql" location="sql"/>
                         <tests2.HttpRequestTest name="testPage"/>
                     </deployables>
 
