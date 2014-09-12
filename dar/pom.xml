@@ -37,7 +37,7 @@
                         </jee.War>
                         <jee.War name="petclinic-backend" groupId="com.xebialabs.xldeploy.demos" artifactId="PetClinic-Backend"/>
 
-                        <jee.DataSourceSpec name="petclinicDS">
+                        <jee.DataSourceSpec name="petclinicDataSource">
                             <jndiName>jdbc/petds</jndiName>
                         </jee.DataSourceSpec>
 
