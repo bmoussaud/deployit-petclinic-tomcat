@@ -13,6 +13,7 @@
         <module>PetClinic-Backend</module>
         <module>dar</module>
         <module>perf</module>
+        <module>acceptance</module>
     </modules>
 
     <pluginRepositories>
