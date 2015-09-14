@@ -16,8 +16,12 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>nexus-xebialabs</id>
-            <url>http://nexus.xebialabs.com/nexus/content/repositories/releases</url>
+            <id>xebialabs-maven2</id>
+            <url>https://dist.xebialabs.com/public/maven2/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>knopflerfish</id>
+            <url>http://www.knopflerfish.org/maven2</url>
         </pluginRepository>
     </pluginRepositories>
 
