@@ -10,8 +10,12 @@
 
 <div id="main">
 
-
-    <h2>Find Super Pets:</h2>
+    <%
+        java.util.Random rand = new java.util.Random();
+        int  n = rand.nextInt(10) + 1;
+        Thread.sleep(n);
+    %>
+    <h2>Find Super Pets: <%= n %></h2>
 
 
 
