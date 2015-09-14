@@ -6,4 +6,4 @@ Feature: Compute
   Scenario: Add two numbers
     Given I have a computer
     When I sum 3 and 2
-    Then the result from computer should be 5
+    Then the result from computer should be 7
