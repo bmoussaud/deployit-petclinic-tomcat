@@ -5,5 +5,5 @@ Feature: Compute
 
   Scenario: Add two numbers
     Given I have a computer
-    When I add 3 and 2
-    Then the result should be 5
+    When I sum 3 and 2
+    Then the result from computer should be 5
