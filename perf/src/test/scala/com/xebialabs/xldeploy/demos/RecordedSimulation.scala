@@ -75,7 +75,7 @@ class RecordedSimulation extends Simulation {
     .pause(3)
     .exec(http("request_13")
       .get("/favicon.ico")
-      .check(status.is(400))).
+      .check(status.is(400)))
     .pause(3)
     .exec(
       http("request_14")
