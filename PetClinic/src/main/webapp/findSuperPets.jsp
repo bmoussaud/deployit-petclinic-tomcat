@@ -12,8 +12,8 @@
 
     <%
         java.util.Random rand = new java.util.Random();
-        int  n = rand.nextInt(10) + 1;
-        Thread.sleep(n);
+        int  n = rand.nextInt(4);
+        Thread.sleep(n*10);
     %>
     <h2>Find Super Pets: <%= n %></h2>
 
