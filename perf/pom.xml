@@ -114,9 +114,6 @@
 
                     </execution>
                 </executions>
-                <configuration>
-                    <runMultipleSimulations>true</runMultipleSimulations>
-                </configuration>
             </plugin>
         </plugins>
     </build>
