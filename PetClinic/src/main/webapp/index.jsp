@@ -11,7 +11,7 @@ String title =resource.getString("title");
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="stylesheet" href="styles/petclinic.css" type="text/css"/>
-  <title>PetClinic 1.0 :: a Spring Framework demonstration</title>
+  <title>PetClinic :: a Spring Framework demonstration</title>
 </head>
 
 <body>
@@ -20,9 +20,7 @@ String title =resource.getString("title");
 <img src="/petclinic/images/pets.png" align="right" style="position:relative;right:30px;">
 <p>&nbsp;</p>
 
-    <p>DEBUT</p>
 	<p>-- {{TITLE}} -- </p>
-    <p>FIN</p>
 
 <ul>
   <li><a href="/petclinic/findOwners.jsp">Find owner</a></li>
