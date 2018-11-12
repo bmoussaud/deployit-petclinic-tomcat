@@ -9,7 +9,7 @@
     </parent>
     <artifactId>PetPortal</artifactId>
     <packaging>dar</packaging>
-    <version>3.0-CD-SNAPSHOT</version>
+    <version>3.0-SNAPSHOT</version>
     <name>PetClinic XL Deploy DAR</name>
     <url>http://www.xebialabs.com</url>
     <build>
@@ -44,7 +44,7 @@
                         <app.Logger name="logger" location="logger"/>
                         <sql.SqlScripts name="sql" location="sql"/>
                         <smoketest.HttpRequestTest name="testPage">
-                            <url>{{smoke.test.url}}</url>
+				<url>{{tests2.ExecutedHttpRequestTest.url}}</url>
                             <expectedResponseText>{{TITLE}}</expectedResponseText>
                         </smoketest.HttpRequestTest>
                     </deployables>
